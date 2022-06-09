@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-
+console.log(createRouter, createWebHashHistory);
 const Home = { template: '<div>Home</div>' };
 const About = { template: '<div>About</div>' };
 
@@ -19,5 +19,5 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes, // `routes: routes` 的缩写
 });
-
+console.log(router);
 export default router;

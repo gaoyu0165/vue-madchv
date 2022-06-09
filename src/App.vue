@@ -1,20 +1,11 @@
 <template>
-  <div id="app">
     <a-layout>
       <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
         <div class="logo" />
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-          <a-menu-item key="1">
+          <a-menu-item :key="i" v-for="i in 40" >
             <step-forward-outlined />
-            <span>nav 1</span>
-          </a-menu-item>
-          <a-menu-item key="2">
-            <video-camera-outlined />
-            <span>nav 2</span>
-          </a-menu-item>
-          <a-menu-item key="3">
-            <upload-outlined />
-            <span>nav 3</span>
+            <span>nav {{i}}</span>
           </a-menu-item>
         </a-menu>
       </a-layout-sider>
@@ -43,7 +34,6 @@
         </a-layout-content>
       </a-layout>
     </a-layout>
-  </div>
 </template>
 
 <script>
@@ -75,6 +65,10 @@ export default defineComponent({
 </script>
 
 <style>
+#app {
+  min-height: 100%;
+  display: flex;
+}
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
   line-height: 64px;

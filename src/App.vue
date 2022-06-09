@@ -5,7 +5,7 @@
       :trigger="null"
       collapsible
       :style="{
-        overflow: 'auto',
+        overflow: 'hidden',
         height: '100vh',
         position: 'fixed',
         left: 0,
@@ -22,8 +22,16 @@
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
-    <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
+    <a-layout :style="{ marginLeft: !collapsed ? '200px' : '80px' }">
+      <a-layout-header
+        style="background: #fff; padding: 0"
+        :style="{
+          position: 'fixed',
+          zIndex: 1,
+          width: '100%',
+          borderBottom: '1px solid #ccc',
+        }"
+      >
         <menu-unfold-outlined
           v-if="collapsed"
           class="trigger"
@@ -37,13 +45,18 @@
       </a-layout-header>
       <a-layout-content
         :style="{
-          margin: '24px 16px',
-          padding: '24px',
+          marginTop: '64px',
+          padding: '0 50px',
           background: '#fff',
           minHeight: '280px',
         }"
       >
-        Content
+        <a-breadcrumb :style="{ margin: '16px 0' }">
+          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item>List</a-breadcrumb-item>
+          <a-breadcrumb-item>App</a-breadcrumb-item>
+        </a-breadcrumb>
+        <router-view></router-view>
       </a-layout-content>
     </a-layout>
   </a-layout>

@@ -1,39 +1,52 @@
 <template>
+  <a-layout id="components-layout-demo-custom-trigger">
+    <a-layout-sider
+      v-model:collapsed="collapsed"
+      :trigger="null"
+      collapsible
+      :style="{
+        overflow: 'auto',
+        height: '100vh',
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        bottom: 0,
+      }"
+      v-scrollbar
+    >
+      <div class="logo" />
+      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+        <a-menu-item :key="i" v-for="i in 40">
+          <step-forward-outlined />
+          <span>nav {{ i }}</span>
+        </a-menu-item>
+      </a-menu>
+    </a-layout-sider>
     <a-layout>
-      <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-        <div class="logo" />
-        <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-          <a-menu-item :key="i" v-for="i in 40" >
-            <step-forward-outlined />
-            <span>nav {{i}}</span>
-          </a-menu-item>
-        </a-menu>
-      </a-layout-sider>
-      <a-layout>
-        <a-layout-header style="background: #fff; padding: 0">
-          <menu-unfold-outlined
-            v-if="collapsed"
-            class="trigger"
-            @click="() => (collapsed = !collapsed)"
-          />
-          <menu-fold-outlined
-            v-else
-            class="trigger"
-            @click="() => (collapsed = !collapsed)"
-          />
-        </a-layout-header>
-        <a-layout-content
-          :style="{
-            margin: '24px 16px',
-            padding: '24px',
-            background: '#fff',
-            minHeight: '280px',
-          }"
-        >
-          Content
-        </a-layout-content>
-      </a-layout>
+      <a-layout-header style="background: #fff; padding: 0">
+        <menu-unfold-outlined
+          v-if="collapsed"
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
+        <menu-fold-outlined
+          v-else
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
+      </a-layout-header>
+      <a-layout-content
+        :style="{
+          margin: '24px 16px',
+          padding: '24px',
+          background: '#fff',
+          minHeight: '280px',
+        }"
+      >
+        Content
+      </a-layout-content>
     </a-layout>
+  </a-layout>
 </template>
 
 <script>
